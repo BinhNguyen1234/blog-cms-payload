@@ -21,6 +21,9 @@ export default buildConfig({
       baseDir: path.resolve(dirname),
     },
   },
+  routes: {
+    admin: '/custom-admin-route'
+  },
   collections: [Users, Media, Post],
   editor: lexicalEditor(),
   secret: process.env.PAYLOAD_SECRET || '',
@@ -36,8 +39,5 @@ export default buildConfig({
   plugins: [
     payloadCloudPlugin(),
     // storage-adapter-placeholder
-  ],
-  routes: {
-    admin: "/cms-admin"
-  }
+  ]
 })

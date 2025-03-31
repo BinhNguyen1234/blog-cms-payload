@@ -13,7 +13,8 @@ export const Users: CollectionConfig = {
       type: 'select',
       name: 'role',
       options: ['super-admin', 'admin', 'user'],
-      required: true
+      required: true,
+      defaultValue: 'user'
     }
   ],
 }

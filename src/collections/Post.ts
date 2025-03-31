@@ -11,7 +11,7 @@ export const Post: CollectionConfig = {
   },
   access: {
     read: ( request ) => {
-      console.log(request.req.user)
+      
       if(request.req.user){
         
         return true

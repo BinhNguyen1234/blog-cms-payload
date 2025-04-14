@@ -1,0 +1,19 @@
+version : '1.0'
+services:
+  blog:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - test-network
+    depends_on:
+      - db
+networks:
+  test-network:
+    driver: bridge
+volumes:
+  test-data:
+    driver: local 
+
+
+  

@@ -1,0 +1,44 @@
+
+services:
+  blog:
+    build: 
+      context: .
+      dockerfile: Dockerfile
+      target: production #use development from Dockerfile
+    environment:
+    - NODE_ENV=production
+    container_name: blog-app
+    networks:
+      - production-network
+  db:
+    image: postgres:latest
+    container_name: "blog-database-production"
+    ports:
+      - "5432:5432"
+    networks:
+      - production-network
+    volumes:
+    - production-data:/var/lib/postgresql/data
+    environment:
+    - POSTGRES_PASSWORD=AdminPassword123456
+    - POSTGRES_USER=Admin
+  nginx:
+      build:
+        context: ./nginx
+      container_name: nginx-proxy
+      ports:
+      - "80:80"
+      - "443:443"
+      depends_on:
+      - blog
+      networks:
+      - production-network
+networks:
+  production-network:
+    driver: bridge
+volumes:
+  production-data:
+    driver: local 
+
+
+  

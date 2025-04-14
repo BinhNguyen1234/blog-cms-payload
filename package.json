@@ -6,7 +6,9 @@
     "dev": "next dev --turbopack",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "up-dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
+    "up": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build"
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.28.1",

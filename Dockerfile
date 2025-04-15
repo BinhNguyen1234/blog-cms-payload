@@ -9,11 +9,11 @@ FROM node:22.12.0 as build
 WORKDIR /app
 COPY . .
 RUN npm install
-CMD [ "npm", "run", "build" ]
+RUN npm run build
 
 FROM node:22.12.0  AS production
 WORKDIR /app
 ENV NODE_ENV=production
-COPY --from=builder /app/.next/standalone ./
-COPY --from=builder /app/.next/static ./.next/static
+COPY --from=build /app/.next/ ./.next
+COPY --from=build /app/public/ ./public
 CMD ["npm", "run", "start"]

@@ -10,7 +10,10 @@
     "build-image": "docker build  --no-cache  -t binhnguyen2410/blog:latest .",
     "push-image": "docker push binhnguyen2410/blog:latest",
     "up-dev": "docker-compose -f docker-compose.yml -f docker-compose.dev.yml up --build",
-    "up": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build"
+    "up": "docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build",
+    "kompose-dev": "kompose convert -f ./docker-compose.yml -f ./docker-compose.dev.yml",
+    "kompose": "kompose convert -f ./docker-compose.yml -f ./docker-compose.prod.yml"
+
   },
   "dependencies": {
     "@payloadcms/db-postgres": "^3.28.1",
